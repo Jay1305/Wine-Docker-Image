@@ -14,8 +14,9 @@ RUN apt-get update -y && \
 
 # Install Wine
 RUN dpkg --add-architecture i386 && \
+    mkdir -pm755 /etc/apt/keyrings && \ 
     wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
-    mv winehq.key /usr/share/keyrings/winehq-archive.key && \
+    mv winehq.key /etc/apt/keyrings/winehq-archive.key && \
     wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources && \
     mv winehq-focal.sources /etc/apt/sources.list.d/ && \
     apt-get update -y && \
